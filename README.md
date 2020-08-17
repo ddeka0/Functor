@@ -18,3 +18,41 @@ the underlying implementation idea (Handle Body Idiom) remains the same.
     1. g++-10 -g -std=c++17 main.cpp
     2. ./a.out
     3. optional: for debug use  -DDEBUG during compilation
+    
+#### Examples:
+    // non member function
+    void func1(int x) {
+        x++;
+        std::cout << x << std::endl;
+    }
+
+    class A {
+    public:
+        // member function
+        int func(int x) {
+            x++;
+            return x + 1;
+        }
+        int func1(int x,int y) {
+            x++;y++;
+            return x + 1 + y;
+        }
+    };
+    
+    // usage:
+    FunctionPtr<void(int)> f2 = func1;
+    f2(1);
+    
+    // usage:
+    using mFunc = FunctionPtr<int(int,int)>;
+    mFunc f(&a,&A::func1);
+    mFunc g;
+    g = f;
+    std::cout << g(1,1) << std::endl;
+    std::cout << f(1,2) << std::endl;
+    
+    // usage:
+    FunctionPtr<void(int)> f1 = [](int x){
+        std::cout << ++x << std::endl;
+    };
+    
