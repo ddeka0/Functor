@@ -8,7 +8,7 @@ Scott Meyers's book `Modern C++ Design`.
 The member function handling is not included in the book `C++ Templates: The Complete Guide`,
 I have included the member function handling feature from Scott Meyers's book.
 
-Functor implemented in `Modern C++ Design` book does not include variadic templates, therefore the number of arguments is restricted in the case of their design.
+Functor implemented in `Modern C++ Design` book does not include variadic templates, therefore the number of arguments to the functor is restricted in the case of their design.
 
 `C++ Templates: The Complete Guide` book has shown the usage of variadic template although 
 the underlying implementation idea (Handle Body Idiom) remains the same.
