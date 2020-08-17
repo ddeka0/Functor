@@ -13,6 +13,10 @@ Functor implemented in `Modern C++ Design` book does not include variadic templa
 `C++ Templates: The Complete Guide` book has shown the usage of variadic template although 
 the underlying implementation idea (Handle Body Idiom) remains the same.
 
+#### Here is an overall idea of what functors are capable of storing and handling:
+
+![functors](https://github.com/ddeka0/Functor/blob/master/functor.gif)
+
 #### Compilation and Testing
 
     1. g++-10 -g -std=c++17 main.cpp
