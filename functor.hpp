@@ -135,7 +135,9 @@ class FunctionPtr<Ret(Args...)> {
         template<typename PointerToObj,typename PointerToMemFun>
         FunctionPtr(PointerToObj&& _obj,PointerToMemFun&& _fun) : m_bridge(nullptr) {
             PrintF;
-            using Bridge = MemFuncFunctorBridge<PointerToObj,PointerToMemFun,Ret,Args...>;
+            // remove references from the pointer and the method
+            // becuase they will be stored inside MemFuncFunctorBridge **TODO check**
+            using Bridge = MemFuncFunctorBridge<std::decay_t<PointerToObj>,std::decay_t<PointerToMemFun>,Ret,Args...>;
             //std::cout << __LINE__ <<" : "<<type_name<Bridge>() << std::endl;
             m_bridge = new Bridge(std::forward<PointerToObj>(_obj),std::forward<PointerToMemFun>(_fun));
         }
